@@ -16,8 +16,32 @@ class ETLProcess:
     def etl(self): 
         dados_extraidos = self.extrair_dados()
         dados_transformados = self.transformar_dados(dados_extraidos)
-        self.carregar_dados(dados_extraidos)
+        self.carregar_dados(dados_transformados)
 
 
 class ETLCSV(ETLProcess):
-    pass
+    def extrair_dados(self): 
+        return pd.read_csv(self.fonte_dados)
+    
+    def transformar_dados(self, dados): 
+        return dados.map(lambda x: x.upper() if isinstance(x, str) else x)
+    
+    def carregar_dados(self, dados_transformados): 
+        print("Dados transformados: ")
+        print(dados_transformados)
+
+
+class ETLExcel(ETLProcess):
+    def __init__(self, fonte_dados):
+        super().__init__(fonte_dados)
+    
+    def extrair_dados(self):
+        return super().extrair_dados()
+    
+    def transformar_dados(self, dados):
+        return "dados transformados"
+    
+if __name__ == "__main__":
+    fonte_csv = 'vendas.csv'
+    etl_csv = ETLCSV(fonte_csv)
+    etl_csv.etl()
