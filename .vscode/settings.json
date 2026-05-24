@@ -1,3 +1,5 @@
 {
-  "python-envs.defaultEnvManager": "ms-python.python:venv"
+  "python-envs.defaultEnvManager": "ms-python.python:system",
+  "python-envs.defaultPackageManager": "ms-python.python:pip",
+  "python.defaultInterpreterPath": "/Users/guilhermesoaresmoreno/Library/Caches/pypoetry/virtualenvs/part-4-sql-ezJg6PfW-py3.13/bin/python"
 }
